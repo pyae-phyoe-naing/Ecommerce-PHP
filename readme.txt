@@ -3,3 +3,5 @@
 ## load data from .env file
 
 - altorouter/altorouter
+
+- philo/laravel-blade
