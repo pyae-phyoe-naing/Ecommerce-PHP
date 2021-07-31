@@ -29,7 +29,7 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => 'c7823cfaca65e136e361097a2ac54a4706fbef77',
+    'reference' => '6d9109e14531bcdc65a05ea00e1962ff488defaa',
     'name' => '__root__',
   ),
   'versions' => 
@@ -41,7 +41,16 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => 'c7823cfaca65e136e361097a2ac54a4706fbef77',
+      'reference' => '6d9109e14531bcdc65a05ea00e1962ff488defaa',
+    ),
+    'altorouter/altorouter' => 
+    array (
+      'pretty_version' => '2.0.1',
+      'version' => '2.0.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '127f6e96998708a31ef32252985bea82e3b03888',
     ),
     'graham-campbell/result-type' => 
     array (
