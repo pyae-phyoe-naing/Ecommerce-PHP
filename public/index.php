@@ -1,6 +1,6 @@
 <?php
 
-require_once '../app/config/_env.php';
+require_once '../bootstrap/init.php';
 
 echo APP_ROOT;
 echo "<br>";
