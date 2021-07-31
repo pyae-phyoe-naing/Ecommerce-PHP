@@ -6,6 +6,6 @@ $router = new AltoRouter();
 
 // $router->setBasePath('/PHP-Ecommerce/public'); // If error, not call custom-domain , call localhost this set.
 
-$router->map('GET','/test','\App\Controllers\BaseController@test','Test Route');
+$router->map('GET','/test','\App\Controllers\IndexController@test','Test Route');
 
 new RouteDispatcher($router);

@@ -6,7 +6,8 @@ namespace App\Controllers;
 
 class BaseController
 {
-  public  function  test(){
-      echo "Hello I'm working ";
-  }
+ public  function  __construct()
+ {
+     echo "I'm parent controller <br>";
+ }
 }
