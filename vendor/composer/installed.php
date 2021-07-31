@@ -6,7 +6,7 @@
     'aliases' => 
     array (
     ),
-    'reference' => 'd1fe606084b903bff0c0983cc45537c41262dc96',
+    'reference' => 'f523185852f31bf0a0102bf990e01f91105edae0',
     'name' => '__root__',
   ),
   'versions' => 
@@ -18,7 +18,7 @@
       'aliases' => 
       array (
       ),
-      'reference' => 'd1fe606084b903bff0c0983cc45537c41262dc96',
+      'reference' => 'f523185852f31bf0a0102bf990e01f91105edae0',
     ),
     'altorouter/altorouter' => 
     array (
@@ -64,6 +64,15 @@
       array (
       ),
       'reference' => '00fc6afee788fa07c311b0650ad276585f8aef96',
+    ),
+    'illuminate/database' => 
+    array (
+      'pretty_version' => 'v5.8.36',
+      'version' => '5.8.36.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'ac9ae2d82b8a6137400f17b3eea258be3518daa9',
     ),
     'illuminate/events' => 
     array (

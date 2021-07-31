@@ -5,3 +5,5 @@
 - altorouter/altorouter
 
 - philo/laravel-blade
+
+- illuminate/database

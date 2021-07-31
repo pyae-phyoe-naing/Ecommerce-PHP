@@ -11,6 +11,6 @@
 <body>
 <h1>Welcome Ecommerce</h1>
 
-<img src="<?php echo URL_ROOT.'/assets/images/logo.png'; ?>" alt="">
+
 </body>
 </html><?php /**PATH C:\xampp\htdocs\PHP-Ecommerce\resources\views/welcome.blade.php ENDPATH**/ ?>
