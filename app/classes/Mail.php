@@ -29,12 +29,11 @@ class Mail{
 
     }
 
-    public function send(){
+    public function send($data){
 
-        $content = "Testing mail from Buy Now Shopping ";
-        $this->mail->addAddress('aungbarlaay7777@gmail.com','Pyae Phyoe Naing'); // Name is optional
-        $this->mail->Subject = "Buy Now Shopping";
-        $this->mail->Body = $content;
+        $this->mail->addAddress($data['to'],$data['from_name']); // Name is optional
+        $this->mail->Subject = $data['subject'];
+        $this->mail->Body = make($data['filename'],$data);
 
         return $this->mail->send();
     }

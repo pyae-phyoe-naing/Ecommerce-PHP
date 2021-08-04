@@ -1,0 +1,1 @@
+<?php /**PATH C:\xampp\htdocs\PHP-Ecommerce\resources\views/mail.blade.php ENDPATH**/ ?>

@@ -5,7 +5,18 @@ use App\Classes\Mail;
 require_once '../bootstrap/init.php';
 
 $mail = new Mail();
-$cond = $mail->send();
+
+$content = "Testing mail from Buy Now Shopping ";
+
+$data = [
+    "to"=>"aungbarlaay7777@gmail.com",
+    "from_name"=>"Pyae Phyoe Naing",
+    "subject"=>"Buy Now Shopping",
+    "content" => $content,
+    "filename"=>"mail"
+];
+
+$cond = $mail->send($data);
 if($cond){
     echo 'Email send success!';
 }else{
