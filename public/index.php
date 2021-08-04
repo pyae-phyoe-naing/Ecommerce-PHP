@@ -1,6 +1,13 @@
 <?php
-use Illuminate\Database\Capsule\Manager as Capsule;
+
+use App\Classes\Mail;
+
 require_once '../bootstrap/init.php';
 
-$users = Capsule::table('users')->where('id',1)->get();
-print_r($users);
+$mail = new Mail();
+$cond = $mail->send();
+if($cond){
+    echo 'Email send success!';
+}else{
+    echo 'Email send fail!';
+}
