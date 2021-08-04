@@ -6,7 +6,7 @@
     'aliases' => 
     array (
     ),
-    'reference' => '7c71589e30ceb1f5d131962b1ae8f192901c5ba4',
+    'reference' => '3af5e64ce385d7e8e38ca24e09c6e5bec9e9f349',
     'name' => '__root__',
   ),
   'versions' => 
@@ -18,7 +18,7 @@
       'aliases' => 
       array (
       ),
-      'reference' => '7c71589e30ceb1f5d131962b1ae8f192901c5ba4',
+      'reference' => '3af5e64ce385d7e8e38ca24e09c6e5bec9e9f349',
     ),
     'altorouter/altorouter' => 
     array (
@@ -37,6 +37,15 @@
       array (
       ),
       'reference' => '4bd5c1cdfcd00e9e2d8c484f79150f67e5d355d9',
+    ),
+    'filp/whoops' => 
+    array (
+      'pretty_version' => '2.14.0',
+      'version' => '2.14.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'fdf92f03e150ed84d5967a833ae93abffac0315b',
     ),
     'graham-campbell/result-type' => 
     array (

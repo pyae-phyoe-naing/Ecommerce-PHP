@@ -9,3 +9,5 @@
 - illuminate/database
 
 - phpmailer/phpmailer
+
+- filp/whoops
