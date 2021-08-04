@@ -26,3 +26,8 @@ function asset($path){
 function beautify($data){
   echo "<pre>".print_r($data,true)."</pre>";
 }
+
+function dd($data)
+{
+   die(var_dump($data));
+}
