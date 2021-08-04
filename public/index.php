@@ -1,6 +1,7 @@
 <?php
 
 use App\Classes\Mail;
+use App\Classes\Session;
 
 require_once '../bootstrap/init.php';
 
@@ -24,4 +25,10 @@ $data = [
 //     echo 'Email send fail!';
 // }
 
+ // Session::put('message',"I'm working!");
+// Session::remove('message');
+ // Session::replace('message','I am message wowww');
+// beautify(Session::get('message'));
+ Session::flash('success','create successfully!');
+Session::flash('success');
 

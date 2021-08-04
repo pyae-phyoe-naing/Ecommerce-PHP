@@ -7,6 +7,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Welcome</title>
     <link rel="Shortcut icon" href="<?php echo URL_ROOT.'assets/images/logo.png'; ?>">
+    <link rel="stylesheet" href="{{ asset('backend/css/main.css') }}">
+
+    <script src="{{ asset('backend/js/main.js') }}"></script>
 </head>
 <body>
 <h1>Welcome Ecommerce</h1>
