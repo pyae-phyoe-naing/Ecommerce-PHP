@@ -19,6 +19,7 @@
         <div class="card-header">Create Category</div>
         <div class="card-body">
             <form action="/admin/category/create" method="POST" enctype="multipart/form-data">
+                <input type="hidden" name="_token" value="{{ App\Classes\CSRFToken::_token() }}">
                 <div class="from-group">
                     <label for="name">Category Name</label>
                     <input type="text" name="name" class="form-control">

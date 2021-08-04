@@ -29,6 +29,6 @@ $data = [
 // Session::remove('message');
  // Session::replace('message','I am message wowww');
 // beautify(Session::get('message'));
- Session::flash('success','create successfully!');
-Session::flash('success');
+//  Session::flash('success','create successfully!');
+// Session::flash('success');
 

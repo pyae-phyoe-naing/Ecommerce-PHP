@@ -3,6 +3,9 @@
 namespace App\Controllers;
 
 use App\Classes\Request;
+use App\Classes\Session;
+use App\Classes\CSRFToken;
+
 
 class CategoryController extends BaseController
 {
@@ -15,13 +18,13 @@ class CategoryController extends BaseController
         return view('admin/category/create');
     }
     public function store(){
-       // beautify(Request::all(true)); // array
-       // beautify(Request::all());  // object
-      // beautify(Request::get('key_post'));
-     // dd(Request::has('key_get'));
-     // dd(Request::has('key_post'));
-      beautify(Request::refresh());
-      beautify(Request::old('key_file', 'image'));
-      beautify(Request::old('key_post', 'name'));
+        $request = Request::get('key_post');
+        $token = $request->_token ;
+        // Session::remove('token');
+       if(CSRFToken::checkToken($token)){
+           echo 'success';
+       }else{
+           echo '419 Page Expire.';
+       }
     }
 }
