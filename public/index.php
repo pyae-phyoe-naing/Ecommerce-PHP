@@ -25,4 +25,3 @@ $data = [
 // }
 
 
-echo $hay;

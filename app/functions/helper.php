@@ -18,3 +18,11 @@ function make($filename,$data){
    ob_end_clean();
    return $content;
 }
+
+function asset($path){
+  echo URL_ROOT.'assets/'.$path;
+}
+
+function beautify($data){
+  echo "<pre>".print_r($data,true)."</pre>";
+}

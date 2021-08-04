@@ -8,4 +8,11 @@ $router = new AltoRouter();
 
 $router->map('GET','/','\App\Controllers\IndexController@welcome','Welcome Route');
 
+$router->map('GET','/admin','\App\Controllers\AdminController@index','Admin Home Route');
+
+$router->map('GET','/admin/category','\App\Controllers\CategoryController@index','Category Home Route');
+$router->map('GET','/admin/category/create','\App\Controllers\CategoryController@create','Category Create Route');
+$router->map('POST','/admin/category/create','\App\Controllers\CategoryController@store','Category Store Route');
+
+
 new RouteDispatcher($router);
