@@ -29,7 +29,7 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => 'f523185852f31bf0a0102bf990e01f91105edae0',
+    'reference' => '7c71589e30ceb1f5d131962b1ae8f192901c5ba4',
     'name' => '__root__',
   ),
   'versions' => 
@@ -41,7 +41,7 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => 'f523185852f31bf0a0102bf990e01f91105edae0',
+      'reference' => '7c71589e30ceb1f5d131962b1ae8f192901c5ba4',
     ),
     'altorouter/altorouter' => 
     array (
@@ -150,6 +150,15 @@ private static $installed = array (
       array (
       ),
       'reference' => '3f0ce2ee198604c53c25188110e6d7b5e887527a',
+    ),
+    'phpmailer/phpmailer' => 
+    array (
+      'pretty_version' => 'v6.5.0',
+      'version' => '6.5.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'a5b5c43e50b7fba655f793ad27303cd74c57363c',
     ),
     'phpoption/phpoption' => 
     array (

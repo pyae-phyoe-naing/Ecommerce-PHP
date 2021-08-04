@@ -7,3 +7,5 @@
 - philo/laravel-blade
 
 - illuminate/database
+
+- phpmailer/phpmailer
