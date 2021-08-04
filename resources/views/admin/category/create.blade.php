@@ -18,6 +18,9 @@
     <div class="card">
         <div class="card-header">Create Category</div>
         <div class="card-body">
+            @if(App\Classes\Session::has('error'))
+              {{ App\Classes\Session::flash('error','','danger') }}
+            @endif
             <form action="/admin/category/create" method="POST" enctype="multipart/form-data">
                 <input type="hidden" name="_token" value="{{ App\Classes\CSRFToken::_token() }}">
                 <div class="from-group">

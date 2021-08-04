@@ -17,6 +17,10 @@
     <div class="card">
         <div class="card-header">Create Category</div>
         <div class="card-body">
+            <?php if(App\Classes\Session::has('error')): ?>
+              <?php echo e(App\Classes\Session::flash('error','','danger')); ?>
+
+            <?php endif; ?>
             <form action="/admin/category/create" method="POST" enctype="multipart/form-data">
                 <input type="hidden" name="_token" value="<?php echo e(App\Classes\CSRFToken::_token()); ?>">
                 <div class="from-group">
