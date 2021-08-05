@@ -15,7 +15,7 @@ $data = [
     "subject"=>"Buy Now Shopping",
     "content" => $content,
     "filename"=>"mail",
-    "img_link"=> "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSlPsFp6x3bSGfAwzw9jxCGPLBG2ZQOmXIJLQ&usqp=CAU"
+    "img_link"=> "https://encrypted-tbn0.gstatic.com/uploads?q=tbn:ANd9GcSlPsFp6x3bSGfAwzw9jxCGPLBG2ZQOmXIJLQ&usqp=CAU"
 ];
 
 // $cond = $mail->send($data);

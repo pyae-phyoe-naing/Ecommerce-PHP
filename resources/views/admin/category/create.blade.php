@@ -29,7 +29,7 @@
                 </div>
                 <div class="from-group">
                     <label for="name">Category Image</label>
-                    <input type="file" name="image" class="form-control">
+                    <input type="file" name="file" class="form-control">
                 </div>
                 <div class="form-group mt-3">
                     <button class="btn btn-primary">Create</button>

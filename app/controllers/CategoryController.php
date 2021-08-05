@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\classes\FileUpload;
 use App\Classes\Request;
 use App\Classes\Session;
 use App\Classes\CSRFToken;
@@ -20,10 +21,12 @@ class CategoryController extends BaseController
     public function store()
     {
         $request = Request::get('key_post');
+        $file = Request::get('key_file');
         $token = $request->_token;
         // Session::remove('token');
         if (CSRFToken::checkToken($token)) {
-            echo $_SERVER['REQUEST_URI']; 
+            $fileUpload = new FileUpload();
+             echo ($fileUpload->move($file));
         } else {
             Session::flash('error', 'CSRF attack occur!');
             Redirect::back();

@@ -6,7 +6,7 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Welcome</title>
-    <link rel="Shortcut icon" href="<?php echo URL_ROOT.'assets/images/logo.png'; ?>">
+    <link rel="Shortcut icon" href="<?php echo URL_ROOT.'assets/uploads/logo.png'; ?>">
     <link rel="stylesheet" href="{{ asset('backend/css/main.css') }}">
 
     <script src="{{ asset('backend/js/main.js') }}"></script>
