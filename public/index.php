@@ -32,7 +32,7 @@ $data = [
 //  Session::flash('success','create successfully!');
 // Session::flash('success');
 
-$validate = new \App\classes\ValidateRequest();
+// $validate = new \App\classes\ValidateRequest();
 // check unique
 //$con = $validate->unique('email','admin@gmail.com','users');
 // check require
@@ -40,6 +40,25 @@ $validate = new \App\classes\ValidateRequest();
 // check min / max
 // $con = $validate->minLength('email','aaaaaaa','5');
 // check email /string / number / mixed
-$con = $validate->mixed('email','123@abAB$.€','5');
+//$con = $validate->mixed('email','123@abAB$.€','5');
+//
+//dd($con);
 
-dd($con);
+// Test Validate
+$post = [
+    "name"=>'',
+    "email"=>'koko@gmail.com',
+    'password'=>'123123',
+    'age'=>23
+];
+$policy = [
+    "name"=>["string"=>true,"minLength"=>4,"required"=>true],  //  check first last index
+    "email"=>["email"=>true,"minLength"=>13,"required"=>true],
+    "age"=>["number"=>true,"minLength"=>2,"required"=>true],
+
+];
+$validator = new \App\classes\ValidateRequest();
+$validator->checkValidate($post,$policy);
+if($validator->hasError()){
+    beautify($validator->getError());
+}
