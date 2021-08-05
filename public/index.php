@@ -32,3 +32,14 @@ $data = [
 //  Session::flash('success','create successfully!');
 // Session::flash('success');
 
+$validate = new \App\classes\ValidateRequest();
+// check unique
+//$con = $validate->unique('email','admin@gmail.com','users');
+// check require
+// $con = $validate->required('email','','users');
+// check min / max
+// $con = $validate->minLength('email','aaaaaaa','5');
+// check email /string / number / mixed
+$con = $validate->mixed('email','123@abAB$.€','5');
+
+dd($con);
