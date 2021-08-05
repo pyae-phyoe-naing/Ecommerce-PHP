@@ -16,6 +16,7 @@
     <link href="<?php echo e(asset('backend/css/main.css')); ?> " rel="stylesheet">
     <link href=" <?php echo e(asset('backend/css/style.css')); ?>" rel="stylesheet">
     <link href="<?php echo e(asset('backend/feather-icons/feather.css')); ?> " rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/dataTables.bootstrap4.min.css">
 </head>
 
 <body>
@@ -182,7 +183,12 @@
 
         </div>
     </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script type="text/javascript" src="<?php echo e(asset('backend/js/main.js')); ?>"></script>
+    <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap4.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <?php echo $__env->yieldContent('scripts'); ?>
 </body>
 
 </html><?php /**PATH C:\xampp\htdocs\PHP-Ecommerce\resources\views/admin/layouts/app.blade.php ENDPATH**/ ?>

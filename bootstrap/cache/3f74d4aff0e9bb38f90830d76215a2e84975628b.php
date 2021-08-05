@@ -27,10 +27,7 @@
                     <label for="name">Category Name</label>
                     <input type="text" name="name" class="form-control">
                 </div>
-                <div class="from-group">
-                    <label for="name">Category Image</label>
-                    <input type="file" name="file" class="form-control">
-                </div>
+
                 <div class="form-group mt-3">
                     <button class="btn btn-primary">Create</button>
                     <a href="/admin/category" class="btn btn-outline-secondary ml-3">Cancel</a>

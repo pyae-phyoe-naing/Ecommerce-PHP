@@ -57,8 +57,8 @@ $policy = [
     "age"=>["number"=>true,"minLength"=>2,"required"=>true],
 
 ];
-$validator = new \App\classes\ValidateRequest();
-$validator->checkValidate($post,$policy);
-if($validator->hasError()){
-    beautify($validator->getError());
-}
+//$validator = new \App\classes\ValidateRequest();
+//$validator->checkValidate($post,$policy);
+//if($validator->hasError()){
+//    beautify($validator->getError());
+//}

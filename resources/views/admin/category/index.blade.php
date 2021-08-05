@@ -21,7 +21,48 @@
             <a href="/admin/category/create" class="btn btn-primary ">create</a>
         </div>
         <div class="card-body">
+            <table id="category" class="table table-responsive-sm" style="width:100%">
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Created At</th>
+                    <th>Control</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach($category as $val)
+                <tr>
+                    <td>{{$val->name}}</td>
+                    <td>{{ Carbon\Carbon::parse($val->created_at)->diffForHumans()}}</td>
+                    <td>
+                        <a href="#" class="bt btn-sm btn-info"><i class="feather-edit"></i></a>
+                        <a href="#" class="bt btn-sm btn-danger"><i class="feather-trash-2"></i></a>
+
+
+                    </td>
+                    <td>
+                        <a href="#" class="btn btn-success btn-sm"><i class="feather-plus-circle"></i></a>
+                    </td>
+
+                </tr>
+                @endforeach
+                </tbody>
+
+            </table>
 
         </div>
     </div>
 @endsection
+@section('scripts')
+    <script>
+
+        $(document).ready(function() {
+            $('#category').DataTable({
+                "displayLength": 5,
+                "bLengthChange": false,
+
+            });
+        });
+    </script>
+@stop

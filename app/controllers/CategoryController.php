@@ -7,12 +7,14 @@ use App\Classes\Request;
 use App\Classes\Session;
 use App\Classes\CSRFToken;
 use App\Classes\Redirect;
+use App\models\Category;
 
 class CategoryController extends BaseController
 {
     public function index()
     {
-        return view('admin/category/index');
+        $category = Category::all();
+        return view('admin/category/index',compact('category'));
     }
     public function create()
     {
