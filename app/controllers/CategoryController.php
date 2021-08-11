@@ -2,14 +2,12 @@
 
 namespace App\Controllers;
 
-use App\classes\FileUpload;
 use App\Classes\Request;
 use App\Classes\Session;
 use App\Classes\CSRFToken;
 use App\Classes\Redirect;
 use App\classes\ValidateRequest;
 use App\models\Category;
-
 class CategoryController extends BaseController
 {
     public function index()
@@ -51,8 +49,17 @@ class CategoryController extends BaseController
                 return view('admin/category/index', compact('category', 'ok'));
             }
         } else {
-            Session::flash('error', 'CSRF attack occur!');
+            Session::flash('error','CSRF attack occur!');
             Redirect::back();
+        }
+    }
+    public function destroy($id)
+    {
+        $category = Category::destroy($id);
+        if($category){
+            Redirect::to('/admin/category',['ok','category delete']);
+        }else{
+            Redirect::to('/admin/category',['fail','category delete fail']);
         }
     }
 }
