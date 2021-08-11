@@ -13,7 +13,7 @@
     <meta name="msapplication-tap-highlight" content="no">
     <link rel="shortcut icon" href="{{ asset('backend/images/shoplogo.png') }}">
 
-    <link href="{{ asset('backend/css/main.css')}} " rel="stylesheet">
+    <link href="{{ asset('backend/css/main.css') }} " rel="stylesheet">
     <link href=" {{ asset('backend/css/style.css') }}" rel="stylesheet">
     <link href="{{ asset('backend/feather-icons/feather.css') }} " rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/dataTables.bootstrap4.min.css">
@@ -63,7 +63,7 @@
                         </div>
                         <button class="close"></button>
                     </div>
-                   
+
                 </div>
                 <div class="app-header-right">
                     <div class="header-btn-lg pr-0">
@@ -73,7 +73,8 @@
                                     <div class="btn-group">
                                         <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
                                             class="p-0 btn">
-                                            <img width="42" class="rounded-circle" src="{{ 'https://ui-avatars.com/api/?background=0D8ABC&color=fff' }}"
+                                            <img width="42" class="rounded-circle"
+                                                src="{{ 'https://ui-avatars.com/api/?background=0D8ABC&color=fff' }}"
                                                 alt="">
                                             <i class="feather-chevron-down ml-2 opacity-8"></i>
                                         </a>
@@ -93,14 +94,14 @@
                                         VP People Manager
                                     </div>
                                 </div>
-                             
+
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    
+
         <div class="app-main">
             <div class="app-sidebar sidebar-shadow">
                 <div class="app-header__logo">
@@ -139,7 +140,7 @@
             </div>
             <div class="app-main__outer">
                 <div class="app-main__inner">
-                   
+
                     @yield('content')
                 </div>
                 <div class="app-wrapper-footer">
@@ -188,6 +189,26 @@
     <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap4.min.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    @if (App\Classes\Session::has('ok') || isset($ok))
+        <script>
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
+
+            Toast.fire({
+                icon: 'success',
+                title: "{{ $ok ?? App\Classes\Session::toast('ok')}}"
+            })
+        </script>
+    @endif
     @yield('scripts')
 </body>
 

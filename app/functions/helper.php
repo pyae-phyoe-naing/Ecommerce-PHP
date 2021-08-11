@@ -18,7 +18,11 @@ function make($filename,$data){
    ob_end_clean();
    return $content;
 }
-
+function slug($data){
+  $data = preg_replace('/[^' .preg_quote('_'). '\pL\pN\s]+/u',"",mb_strtolower($data));
+  $data = preg_replace('/[ _]+/u','-',$data);
+  return $data;
+}
 function asset($path){
   echo URL_ROOT.'assets/'.$path;
 }

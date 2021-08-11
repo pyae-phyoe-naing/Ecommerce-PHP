@@ -2,6 +2,8 @@
 
 namespace App\Classes;
 
+use App\Classes\Request;
+
 class Session
 {
     public static function put($key, $value)
@@ -53,4 +55,19 @@ class Session
             self::remove($key);
         }
     }
+
+    public static function error($key){
+        if(self::has('errors')){
+            echo self::get('errors')[$key];
+            self::remove('errors');
+        }
+    }
+
+    public static function toast($key){
+        if(self::has($key)){
+            echo self::get($key);
+            self::remove($key);
+        }
+    }
+
 }
