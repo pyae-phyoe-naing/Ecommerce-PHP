@@ -16,6 +16,14 @@
                 </a>
 
             </li>
+
+            <li>
+                <a href="/admin/subcat" class="@yield('subcat')">
+                    <i class="metismenu-icon feather-credit-card"></i>
+                    Sub Category
+                </a>
+
+            </li>
             {{-- <li>
                 <a href="#" class="@yield('category')">
                     <i class="metismenu-icon feather-grid"></i>

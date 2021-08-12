@@ -13,7 +13,7 @@ class CategoryController extends BaseController
     public function index()
     {
         $total_count = Category::count();
-        list( $category,$pages) = paginate(2,$total_count,new Category());
+        list( $category,$pages) = paginate(4,$total_count,new Category());
         $category = json_decode( json_encode($category));
 
         return view('admin/category/index', compact('category','pages'));
@@ -87,6 +87,7 @@ class CategoryController extends BaseController
                     'message'=>'category update!'
                 ];
                 echo json_encode($data);
+                exit;
             }
         }else{
             $data = [
@@ -94,6 +95,7 @@ class CategoryController extends BaseController
                 'message'=>'CSRF attrack occur!'
             ];
             echo json_encode($data);
+            exit;
         }
         
     }
@@ -107,12 +109,14 @@ class CategoryController extends BaseController
                 'message'=>'Name is already in use!',
             ];
             echo json_encode($data);
+            exit;
         }else{
             $data = [
                 'success' => true,
                 'message'=>'Name is ok!'
             ];
             echo json_encode($data);
+            exit;
         }
     }
 }

@@ -17,5 +17,8 @@ $router->map('GET','/admin/category/[i:id]/delete','\App\Controllers\CategoryCon
 $router->map('POST','/admin/category/[i:id]/unique','\App\Controllers\CategoryController@unique','Category Unique Route');
 $router->map('POST','/admin/category/[i:id]/update','\App\Controllers\CategoryController@update','Category Update Route');
 
+$router->map('GET','/admin/subcat','\App\Controllers\SubCatController@index','SubCat Home Route');
+$router->map('POST','/admin/subcat/create','\App\Controllers\SubCatController@store','SubCat Store Route');
+
 
 new RouteDispatcher($router);

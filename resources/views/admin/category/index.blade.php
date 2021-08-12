@@ -43,7 +43,8 @@
                                 class="feather-trash-2 text-white"></i></a>
                     </td>
                     <td>
-                        <a href="#" class="btn btn-success btn-sm"><i class="feather-plus-circle"></i></a>
+                        <a onclick="createSubCatModal({{ $val->id }},'{{ $val->name }}')"
+                            class="btn btn-success btn-sm text-white"><i class="feather-plus-circle"></i></a>
                     </td>
 
                 </tr>
@@ -87,6 +88,39 @@ role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 </div>
 </div>
 <!-- Category Edit Modal End  -->
+
+<!-- CSub Category Create Modal Start  -->
+
+<div class="modal fade sub_cat" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1"
+role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Create Sub Category</h5>
+        </div>
+        <div class="modal-body">
+            <form id="create_sub_cat">
+                <input type="hidden" id="subcat_token" value="{{ App\Classes\CSRFToken::_token() }}">
+                <input type="hidden" id="parent_cat_id">
+                <div class="form-group">
+                    <label for="cat_name">Category Name</label>
+                    <input type="text" readonly id='parent_cat_name' class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="cat_name">Sub Category Name</label>
+                    <input required type="text" id='sub_cat_name' class="form-control">
+                    <small class="text text-danger"><strong id='valid_subcat'></strong></small>
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+            <button form="create_sub_cat" onclick="createSubCat(event)" class="btn btn-primary">Create</button>
+        </div>
+    </div>
+</div>
+</div>
+<!-- Sub Category Create Modal End  -->
 @endsection
 @section('scripts')
 <script>
@@ -168,6 +202,56 @@ role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 });
 
 
+            }
+        }
+    }
+
+    // Create Sub Cat
+    function createSubCatModal(cat_id, name) {
+        $('#parent_cat_id').val(cat_id);
+        $('#parent_cat_name').val(name);
+        $('#valid_subcat').text('');
+        $('#sub_cat_name').val('');
+        $('.sub_cat').modal('show')
+    }
+
+    function createSubCat(event) {
+        event.preventDefault();
+
+        var parentId = $('#parent_cat_id').val();
+        var name = $('#sub_cat_name').val();
+        var token = $('#subcat_token').val();
+
+        if (name === '') {
+            $('#valid_subcat').text('name field is required');
+        } else {
+            if (name.length < 3) {
+                $('#valid_subcat').text('name field is at least 3 character');
+            } else {
+                $.ajax({
+                    type: 'POST',
+                    url: `/admin/subcat/create`,
+                    data: {
+                        cat_id: parentId,
+                        name: name,
+                        token: token
+                    },
+                    success: function(response) {
+                        var res = JSON.parse(response);
+                        if (res.validate === false) {
+                            $('#valid_subcat').text(res.message.name);
+                        }
+                        if (res.success) {
+                            $('.sub_cat').modal('hide');
+                            window.location.href ='/admin/subcat';
+                        } 
+                        if(res.success === false) {
+                            $('.sub_cat').modal('hide');
+                            toastModal('error', 'Error...', res.message);
+                        }
+
+                    }
+                });
             }
         }
     }

@@ -16,6 +16,14 @@
                 </a>
 
             </li>
+
+            <li>
+                <a href="/admin/subcat" class="<?php echo $__env->yieldContent('subcat'); ?>">
+                    <i class="metismenu-icon feather-credit-card"></i>
+                    Sub Category
+                </a>
+
+            </li>
             
         </ul>
     </div>
