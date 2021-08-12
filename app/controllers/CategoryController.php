@@ -45,11 +45,14 @@ class CategoryController extends BaseController
                     "name" => $request->name,
                     "slug" => slug($request->name)
                 ]);
-                //Session::put('ok', 'create success');
-                //Redirect::back();
-                $ok = 'create success';
-                $category = Category::all();
-                return view('admin/category/index', compact('category', 'ok'));
+                // Session::put('ok', 'create success');
+                // Redirect::back();
+                
+                // $ok = 'create success';
+                // $category = Category::all();
+                // return view('admin/category/index', compact('category', 'ok'));
+
+                Redirect::to('/admin/category',['ok','category created']);
             }
         } else {
             Session::flash('error','CSRF attack occur!');
@@ -63,6 +66,53 @@ class CategoryController extends BaseController
             Redirect::to('/admin/category',['ok','category delete']);
         }else{
             Redirect::to('/admin/category',['fail','category delete fail']);
+        }
+    }
+    public function update($id){
+        $request = Request::get('key_post');
+        $data = [
+            'id' => $request->id,
+            'token' => $request->token,
+            'name' => $request->name
+        ];
+        if(CSRFToken::checkToken($request->token)){
+            $category = Category::where('id',$id)->update([
+                'name'=> $request->name,
+                'slug'=> slug($request->name)
+            ]);
+            if($category){
+                Session::put('ok','category update');
+                $data = [
+                    'success' => true,
+                    'message'=>'category update!'
+                ];
+                echo json_encode($data);
+            }
+        }else{
+            $data = [
+                'success' => false,
+                'message'=>'CSRF attrack occur!'
+            ];
+            echo json_encode($data);
+        }
+        
+    }
+
+    public function unique($id){
+        $request = Request::get('key_post');
+        $cond = Category::where('name',$request->name)->where('id','!=',$id)->first();
+        if($cond){
+            $data = [
+                'success' => false,
+                'message'=>'Name is already in use!',
+            ];
+            echo json_encode($data);
+        }else{
+            $data = [
+                'success' => true,
+                'message'=>'Name is ok!'
+            ];
+            echo json_encode($data);
         }
     }
 }

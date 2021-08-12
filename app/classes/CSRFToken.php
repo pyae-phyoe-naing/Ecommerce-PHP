@@ -14,7 +14,7 @@ class CSRFToken
             echo Session::get('token');
         }
     }
-    public function checkToken($token)
+    public static function checkToken($token)
     {
         return Session::get('token') === $token;
     }
