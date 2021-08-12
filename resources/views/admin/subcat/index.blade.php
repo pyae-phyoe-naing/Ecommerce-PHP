@@ -97,7 +97,22 @@ role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         "paging": true
     });
 
-
+    // Delete Category
+    function myDel(id) {
+        Swal.fire({
+            title: 'Are you sure delete?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Confirm'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location = `/admin/subcat/${id}/delete`;
+            }
+        })
+    }
     // Edit Category
     function editCat(id, name, parent_name) {
         $('#subcat_id').val(id);

@@ -108,7 +108,7 @@ role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             confirmButtonText: 'Confirm'
         }).then((result) => {
             if (result.isConfirmed) {
-                window.location = `/admin/category/${id}/delete`;
+                window.location = `/admin/subcat/${id}/delete`;
             }
         })
     }

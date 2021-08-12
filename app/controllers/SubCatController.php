@@ -2,11 +2,12 @@
 
 namespace App\Controllers;
 
-use App\Classes\CSRFToken;
 use App\Classes\Request;
 use App\Classes\Session;
-use App\classes\ValidateRequest;
+use App\Classes\Redirect;
+use App\Classes\CSRFToken;
 use App\models\SubCategory;
+use App\classes\ValidateRequest;
 
 class SubCatController extends BaseController
 {
@@ -96,6 +97,16 @@ class SubCatController extends BaseController
             ];
             echo json_encode($data);
             exit;
+        }
+    }
+
+    public function destroy($id)
+    {
+        $category = SubCategory::destroy($id);
+        if($category){
+            Redirect::to('/admin/subcat',['ok','subcat delete']);
+        }else{
+            Redirect::to('/admin/subcat',['fail','subcat delete fail']);
         }
     }
 }

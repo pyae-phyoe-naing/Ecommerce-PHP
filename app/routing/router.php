@@ -19,6 +19,7 @@ $router->map('POST','/admin/category/[i:id]/update','\App\Controllers\CategoryCo
 
 $router->map('GET','/admin/subcat','\App\Controllers\SubCatController@index','SubCat Home Route');
 $router->map('POST','/admin/subcat/create','\App\Controllers\SubCatController@store','SubCat Store Route');
+$router->map('GET','/admin/subcat/[i:id]/delete','\App\Controllers\SubCatController@destroy','SubCat Delete Route');
 $router->map('POST','/admin/subcat/[i:id]/update','\App\Controllers\SubCatController@update','SubCat Update Route');
 
 
