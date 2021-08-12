@@ -36,12 +36,13 @@
                     <td><?php echo e($val->cat->name); ?></td>
                     <td><?php echo e(Carbon\Carbon::parse($val->created_at)->diffForHumans()); ?></td>
                     <td>
-                        <span onclick="editCat('<?php echo e($val->id); ?>','<?php echo e($val->name); ?>')"
+                        <span
+                            onclick="editCat('<?php echo e($val->id); ?>','<?php echo e($val->name); ?>','<?php echo e($val->cat->name); ?>')"
                             class="bt btn-sm btn-info"><i class="feather-edit"></i></span>
                         <a onclick="myDel(<?php echo e($val->id); ?>)" class="bt btn-sm btn-danger ml-3"><i
                                 class="feather-trash-2 text-white"></i></a>
                     </td>
-                  
+
                 </tr>
             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
         </tbody>
@@ -54,19 +55,19 @@
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('modal'); ?>
 
-<!-- CSub Category Create Modal Start  -->
+<!-- CSub Category Edit Modal Start  -->
 
-<div class="modal fade sub_cat" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1"
+<div class="modal fade subcat_edit" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1"
 role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 <div class="modal-dialog" role="document">
     <div class="modal-content">
         <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Create Sub Category</h5>
+            <h5 class="modal-title" id="exampleModalLabel">Edit Sub Category</h5>
         </div>
         <div class="modal-body">
-            <form id="create_sub_cat">
+            <form id="edit_sub_cat">
                 <input type="hidden" id="subcat_token" value="<?php echo e(App\Classes\CSRFToken::_token()); ?>">
-                <input type="hidden" id="parent_cat_id">
+                <input type="hidden" id="subcat_id">
                 <div class="form-group">
                     <label for="cat_name">Category Name</label>
                     <input type="text" readonly id='parent_cat_name' class="form-control">
@@ -80,7 +81,7 @@ role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-            <button form="create_sub_cat" onclick="createSubCat(event)" class="btn btn-primary">Create</button>
+            <button form="edit_sub_cat" onclick="updateCat(event)" class="btn btn-primary">Update</button>
         </div>
     </div>
 </div>
@@ -90,7 +91,7 @@ role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 <?php $__env->startSection('scripts'); ?>
 <script>
     $('#subcat').DataTable({
-        "displayLength":5,
+        "displayLength": 5,
         "bLengthChange": false,
         "paging": true
     });
@@ -112,66 +113,48 @@ role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         })
     }
     // Edit Category
-    function editCat(id, name) {
-        $('#cat_id').val(id);
-        $('#cat_name').val(name);
-        $('#valid_cat').text('');
-        $('.cat_edit').modal('show');
+    function editCat(id, name, parent_name) {
+        $('#subcat_id').val(id);
+        $('#sub_cat_name').val(name);
+        $('#parent_cat_name').val(parent_name);
+        $('#valid_subcat').text('');
+        $('.subcat_edit').modal('show');
     }
 
     function updateCat(event) {
         event.preventDefault();
 
-        var id = $('#cat_id').val();
-        var token = $('#cat_edit_token').val();
-        var name = $('#cat_name').val();
+        var token = $('#subcat_token').val();
+        var id = $('#subcat_id').val();
+        var name = $('#sub_cat_name').val();
         if (name === '') {
-            $('#valid_cat').text('Name field is required');
+            $('#valid_subcat').text('Name field is required');
         } else {
             if (name.length < 3) {
-                $('#valid_cat').text('Name is at least 3 character');
+                $('#valid_subcat').text('Name is at least 3 character');
             } else {
                 $.ajax({
                     type: 'POST',
-                    url: `/admin/category/${id}/unique`,
+                    url: `/admin/subcat/${id}/update`,
                     data: {
                         id,
+                        token,
                         name
                     },
                     success: function(response) {
                         var res = JSON.parse(response);
-                        if (!res.success) {
-                            $('#valid_cat').text(res.message);
+                        if (res.success) {
+                            $('.subcat_edit').modal('hide');
+                            location.reload();
                         } else {
-                            $('.cat_edit').modal('hide');
-                            $.ajax({
-                                type: 'POST',
-                                url: `/admin/category/${id}/update`,
-                                data: {
-                                    id,
-                                    token,
-                                    name
-                                },
-                                success: function(response) {
-                                    var res = JSON.parse(response);
-                                    if (res.success) {
-                                        location.reload();
-                                    } else {
-                                        toastModal('error', 'Error...', res.message);
-                                    }
-                                }
-                            })
+                            $('.subcat_edit').modal('hide');
+                            toastModal('error', 'Error...', res.message);
                         }
-                    },
-
-                });
-
-
+                    }
+                })
             }
         }
     }
-
-    
 </script>
 <?php $__env->stopSection(); ?>
 

@@ -70,11 +70,7 @@ class CategoryController extends BaseController
     }
     public function update($id){
         $request = Request::get('key_post');
-        $data = [
-            'id' => $request->id,
-            'token' => $request->token,
-            'name' => $request->name
-        ];
+    
         if(CSRFToken::checkToken($request->token)){
             $category = Category::where('id',$id)->update([
                 'name'=> $request->name,

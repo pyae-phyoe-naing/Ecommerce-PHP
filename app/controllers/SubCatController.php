@@ -64,4 +64,38 @@ class SubCatController extends BaseController
             exit;
         }
     }
+
+    public function update($id){
+        $request = Request::get('key_post');
+        // Session::remove('token');
+        if(CSRFToken::checkToken($request->token)){
+            $subcat = SubCategory::where('id',$id)->update([
+                'name'=> $request->name
+            ]);
+          //  $subcat = false;  // test subcat create fail process
+            if($subcat){
+                Session::put('ok','subcat update');
+                $data = [
+                    'success' => true,
+                    'message'=>'subcat update!'
+                ];
+                echo json_encode($data);
+                exit;
+            }else{
+                $data = [
+                    'success' => false,
+                    'message'=>'subcat create fail'
+                ];
+                echo json_encode($data);
+                exit;
+            }
+        }else{
+            $data = [
+                'success' => false,
+                'message'=>'CSRF attrack occur!'
+            ];
+            echo json_encode($data);
+            exit;
+        }
+    }
 }
