@@ -1,6 +1,8 @@
 <?php
 
 use Philo\Blade\Blade;
+use voku\helper\Paginator;
+
 
 function view($path, $data=[]){
     $view = APP_ROOT.'/resources/views';
@@ -9,7 +11,14 @@ function view($path, $data=[]){
     $blade = new Blade($view,$cache);
     echo $blade->view()->make($path,$data)->render();
 }
+function paginate($num_of_record,$total_record,$object){
 
+   $pages = new Paginator($num_of_record,'p');
+   $pages->set_total($total_record);
+   $dataArr = $object->genPaginate($pages->get_limit());
+
+   return [$dataArr,$pages->page_links()];
+}
 function make($filename,$data){
   extract($data); // $content,$filename,$to .. etc
   ob_start(); // ob off and redenr view file but not show this place between
@@ -35,3 +44,4 @@ function dd($data)
 {
    die(var_dump($data));
 }
+

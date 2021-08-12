@@ -12,8 +12,11 @@ class CategoryController extends BaseController
 {
     public function index()
     {
-        $category = Category::all();
-        return view('admin/category/index', compact('category'));
+        $total_count = Category::count();
+        list( $category,$pages) = paginate(2,$total_count,new Category());
+        $category = json_decode( json_encode($category));
+
+        return view('admin/category/index', compact('category','pages'));
     }
     public function create()
     {

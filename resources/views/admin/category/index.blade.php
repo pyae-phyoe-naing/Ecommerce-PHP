@@ -50,7 +50,9 @@
         </tbody>
 
     </table>
-
+    <div class="paginate mt-3 float-right">
+        {!! $pages !!}
+    </div>
 </div>
 </div>
 @endsection
@@ -60,6 +62,7 @@
         $('#category').DataTable({
             "displayLength": 5,
             "bLengthChange": false,
+            paging : false
         });
     });
 

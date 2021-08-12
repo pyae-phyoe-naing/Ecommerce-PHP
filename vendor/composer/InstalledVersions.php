@@ -29,7 +29,7 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => '68cff35d8fe527a531f28ceadcb76119d57db289',
+    'reference' => '4e8e03fc016b127dea9d42fcffa3a6a0332b6ce7',
     'name' => '__root__',
   ),
   'versions' => 
@@ -41,7 +41,7 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => '68cff35d8fe527a531f28ceadcb76119d57db289',
+      'reference' => '4e8e03fc016b127dea9d42fcffa3a6a0332b6ce7',
     ),
     'altorouter/altorouter' => 
     array (
@@ -292,6 +292,15 @@ private static $installed = array (
       array (
       ),
       'reference' => 'b3eac5c7ac896e52deab4a99068e3f4ab12d9e56',
+    ),
+    'voku/pagination' => 
+    array (
+      'pretty_version' => '4.0.0',
+      'version' => '4.0.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'e80c49a5744b608eb7f9c559a40e812f6e873fdb',
     ),
   ),
 );

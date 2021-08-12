@@ -49,7 +49,10 @@
         </tbody>
 
     </table>
+    <div class="paginate mt-3 float-right">
+        <?php echo $pages; ?>
 
+    </div>
 </div>
 </div>
 <?php $__env->stopSection(); ?>
@@ -59,6 +62,7 @@
         $('#category').DataTable({
             "displayLength": 5,
             "bLengthChange": false,
+            paging : false
         });
     });
 

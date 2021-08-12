@@ -6,3 +6,23 @@
     height: 33px;
     width:60px;
 }
+
+.pagination  li a, .pagination  li span{
+    cursor: pointer;
+    position: relative;
+    display: block;
+    padding: .5rem .75rem;
+    margin-left: -1px;
+    line-height: 1.25;
+    background-color:transparent;
+    border: 1px solid #dee2e6;
+}
+.pagination li{
+    margin: 0 3px;
+    color: #007bff !important;
+    background-color:white !important;
+}
+   .paginate  li.active{
+    background-color:#007bff !important;
+    color: white !important;
+}

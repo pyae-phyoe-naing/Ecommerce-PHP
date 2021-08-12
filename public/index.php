@@ -2,6 +2,7 @@
 
 use App\Classes\Mail;
 use App\Classes\Session;
+use App\models\Category;
 
 require_once '../bootstrap/init.php';
 
