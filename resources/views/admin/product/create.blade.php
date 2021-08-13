@@ -19,7 +19,6 @@
 <div class="card-header">Create Product</div>
 <div class="card-body px-5">
     @include('share.flash_message')
-
     <form action="/admin/product/create" method="POST" enctype="multipart/form-data">
         <input type="hidden" name="_token" value="{{ App\Classes\CSRFToken::_token() }}">
         <!-- Name and Price -->

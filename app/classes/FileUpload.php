@@ -8,6 +8,7 @@ class FileUpload
 {
 
   private $maxSize = 2097152 ;
+  private $filePath;
   public  function getName($file,$name=""){
       if($name === ""){
           $name = pathinfo($file->file->tmp_name,PATHINFO_FILENAME);
@@ -25,7 +26,9 @@ class FileUpload
       $ext = pathinfo($file->file->name,PATHINFO_EXTENSION);
       return in_array($ext,$validExt);
   }
-
+  public function getPath(){
+      return $this->filePath;
+  }
   public function move($file,$filename = ""){
       $filename = $this->getName($file);
       $tmp_name = $file->file->tmp_name;
@@ -35,6 +38,7 @@ class FileUpload
               if(!is_dir($path)){
                   mkdir($path);
               }
+              $this->filePath = URL_ROOT.'public/assets/uploads/'.$filename;
               return move_uploaded_file($tmp_name,$path.$filename);
 
           }else{

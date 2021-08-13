@@ -18,7 +18,6 @@
 <div class="card-header">Create Product</div>
 <div class="card-body px-5">
     <?php echo $__env->make('share.flash_message', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
-
     <form action="/admin/product/create" method="POST" enctype="multipart/form-data">
         <input type="hidden" name="_token" value="<?php echo e(App\Classes\CSRFToken::_token()); ?>">
         <!-- Name and Price -->
