@@ -58,11 +58,8 @@
                     <td><?php echo e($val->quantity); ?></td>
                     <td><?php echo e(Carbon\Carbon::parse($val->created_at)->diffForHumans()); ?></td>
                     <td class="text-nowrap">
-                        <span
-                            onclick="editCat('<?php echo e($val->id); ?>','<?php echo e($val->name); ?>','<?php echo e($val->cat->name); ?>')"
-                            class="bt btn-sm btn-info"><i class="feather-edit"></i></span>
-                        <a onclick="myDel(<?php echo e($val->id); ?>)" class="bt btn-sm btn-danger ml-3"><i
-                                class="feather-trash-2 text-white"></i></a>
+                        <a href="/admin/product/<?php echo e($val->id); ?>/edit" class="btn btn-sm btn-info"><i class="feather-edit"></i></a>
+                        <a onclick="myDel(<?php echo e($val->id); ?>)" class="btn btn-sm btn-danger ml-3"><i class="feather-trash-2 text-white"></i></a>
                     </td>
 
                 </tr>
@@ -81,7 +78,22 @@
     $('#product').DataTable({
        "paging": false
     });
-
+    // Delete Category
+    function myDel(id) {
+        Swal.fire({
+            title: 'Are you sure delete?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Confirm'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location = `/admin/product/${id}/delete`;
+            }
+        })
+    }
 </script>
 <?php $__env->stopSection(); ?>
 

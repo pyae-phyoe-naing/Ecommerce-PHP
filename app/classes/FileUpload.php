@@ -39,7 +39,7 @@ class FileUpload
                   mkdir($path);
               }
               $this->filePath = URL_ROOT.'assets/uploads/'.$filename;
-              return move_uploaded_file($tmp_name,$path.$filename);
+              return move_uploaded_file($tmp_name,$path.$filename) ? true : false;
 
           }else{
               return "File size is exceeded!";

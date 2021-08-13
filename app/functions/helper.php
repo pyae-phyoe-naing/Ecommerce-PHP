@@ -48,3 +48,8 @@ function escape($html)
 {
 	return htmlspecialchars($html, ENT_QUOTES | ENT_SUBSTITUTE, "UTF-8");
 }
+function getUploadFolderImage($db_img){
+  $arr = explode('/', $db_img);
+  $path = APP_ROOT.'/public/assets/uploads/';
+  return $path.$arr[count($arr)-1];
+}

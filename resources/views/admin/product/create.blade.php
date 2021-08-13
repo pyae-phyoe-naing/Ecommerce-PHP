@@ -55,9 +55,7 @@
                 <div class="from-group">
                     <label for="subcat">Sub Cat</label>
                     <select name="sub_cat_id" id="subcat" class="form-control">
-                        @foreach ($subcats as $val)
-                            <option value="{{ $val->id }}">{{ $val->name }}</option>
-                        @endforeach
+
                     </select>
                     <small class="text text-danger"><strong>{{ App\Classes\Session::error('sub_cat_id') }}</strong></small>
                 </div>
