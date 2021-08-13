@@ -49,7 +49,7 @@
         </tbody>
 
     </table>
-
+    <div class="float-right mt-3 paginate"> {!! $pages !!}</div>
 </div>
 </div>
 
@@ -94,7 +94,7 @@ role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     $('#subcat').DataTable({
         "displayLength": 5,
         "bLengthChange": false,
-        "paging": true
+        "paging": false
     });
 
     // Delete Category

@@ -21,19 +21,56 @@
     </div>
 <div class="card-body">
 
-    <table id="subcat" class="table table-responsive-sm" style="width:100%">
+    <table id="product" class="table table-responsive-sm" style="width:100%">
         <thead>
             <tr>
                 <th>Name</th>
-                <th>Category</th>
-                <th>Created At</th>
+                <th>Type</th>
+                <th>Photo</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>CreatedAt</th>
                 <th>Action</th>
             </tr>
         </thead>
-        
+        <tbody>
+            <?php $__currentLoopData = $product; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $val): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                <tr>
+                    <td><?php echo e($val->name); ?></td>
+                    <td>
+                        <table class="table table-bordered">
+                            <tbody>
+                                <tr>
+                                    <td><small class="badge badge-success">Category</small></td>
+                                    <td><small><?php echo e($val->cat->name); ?></small></td>
+                                </tr>
+                                <tr>
+                                    <td><small class="badge badge-success">Sub Cat</small></td>
+                                    <td><small><?php echo e($val->subcat->name); ?></small></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                    <td>
+                        <img src="<?php echo e($val->image); ?>" height="60" width="60" alt="">
+                    </td>
+                    <td><?php echo e($val->price); ?> MMK</td>
+                    <td><?php echo e($val->quantity); ?></td>
+                    <td><?php echo e(Carbon\Carbon::parse($val->created_at)->diffForHumans()); ?></td>
+                    <td class="text-nowrap">
+                        <span
+                            onclick="editCat('<?php echo e($val->id); ?>','<?php echo e($val->name); ?>','<?php echo e($val->cat->name); ?>')"
+                            class="bt btn-sm btn-info"><i class="feather-edit"></i></span>
+                        <a onclick="myDel(<?php echo e($val->id); ?>)" class="bt btn-sm btn-danger ml-3"><i
+                                class="feather-trash-2 text-white"></i></a>
+                    </td>
+
+                </tr>
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+        </tbody>
 
     </table>
-
+  <div class="float-right mt-3 paginate"> <?php echo $pages; ?></div>
 </div>
 </div>
 
@@ -41,10 +78,8 @@
 
 <?php $__env->startSection('scripts'); ?>
 <script>
-    $('#subcat').DataTable({
-        "displayLength": 5,
-        "bLengthChange": false,
-        "paging": true
+    $('#product').DataTable({
+       "paging": false
     });
 
 </script>

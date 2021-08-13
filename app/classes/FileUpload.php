@@ -38,7 +38,7 @@ class FileUpload
               if(!is_dir($path)){
                   mkdir($path);
               }
-              $this->filePath = URL_ROOT.'public/assets/uploads/'.$filename;
+              $this->filePath = URL_ROOT.'assets/uploads/'.$filename;
               return move_uploaded_file($tmp_name,$path.$filename);
 
           }else{

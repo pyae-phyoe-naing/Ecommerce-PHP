@@ -22,22 +22,43 @@
     </div>
 <div class="card-body">
 
-    <table id="subcat" class="table table-responsive-sm" style="width:100%">
+    <table id="product" class="table table-responsive-sm" style="width:100%">
         <thead>
             <tr>
                 <th>Name</th>
-                <th>Category</th>
-                <th>Created At</th>
+                <th>Type</th>
+                <th>Photo</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>CreatedAt</th>
                 <th>Action</th>
             </tr>
         </thead>
-        {{-- <tbody>
-            @foreach ($category as $val)
+        <tbody>
+            @foreach ($product as $val)
                 <tr>
                     <td>{{ $val->name }}</td>
-                    <td>{{ $val->cat->name }}</td>
-                    <td>{{ Carbon\Carbon::parse($val->created_at)->diffForHumans() }}</td>
                     <td>
+                        <table class="table table-bordered">
+                            <tbody>
+                                <tr>
+                                    <td><small class="badge badge-success">Category</small></td>
+                                    <td><small>{{ $val->cat->name }}</small></td>
+                                </tr>
+                                <tr>
+                                    <td><small class="badge badge-success">Sub Cat</small></td>
+                                    <td><small>{{ $val->subcat->name }}</small></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                    <td>
+                        <img src="{{ $val->image }}" height="60" width="60" alt="">
+                    </td>
+                    <td>{{ $val->price }} MMK</td>
+                    <td>{{ $val->quantity }}</td>
+                    <td>{{ Carbon\Carbon::parse($val->created_at)->diffForHumans() }}</td>
+                    <td class="text-nowrap">
                         <span
                             onclick="editCat('{{ $val->id }}','{{ $val->name }}','{{ $val->cat->name }}')"
                             class="bt btn-sm btn-info"><i class="feather-edit"></i></span>
@@ -47,10 +68,10 @@
 
                 </tr>
             @endforeach
-        </tbody> --}}
+        </tbody>
 
     </table>
-
+  <div class="float-right mt-3 paginate"> {!! $pages !!}</div>
 </div>
 </div>
 
@@ -58,10 +79,8 @@
 
 @section('scripts')
 <script>
-    $('#subcat').DataTable({
-        "displayLength": 5,
-        "bLengthChange": false,
-        "paging": true
+    $('#product').DataTable({
+       "paging": false
     });
 
 </script>

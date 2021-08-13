@@ -16,7 +16,10 @@ class ProductController extends BaseController
 {
     public function index()
     {
-        return view('admin.product.index');
+        $total_count = Product::count();
+        list($product, $pages) = paginate(2, $total_count, new Product());
+        $product = json_decode(json_encode($product));
+        return view('admin.product.index',compact('product','pages'));
     }
     public function create()
     {
