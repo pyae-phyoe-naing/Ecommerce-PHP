@@ -5,4 +5,6 @@
 <?php if(App\Classes\Session::has('success')): ?>
 <?php echo e(App\Classes\Session::flash('success','')); ?>
 
-<?php endif; ?><?php /**PATH C:\xampp\htdocs\PHP-Ecommerce\resources\views/share/flash_message.blade.php ENDPATH**/ ?>
+<?php endif; ?>
+
+<?php /**PATH C:\xampp\htdocs\PHP-Ecommerce\resources\views/share/flash_message.blade.php ENDPATH**/ ?>

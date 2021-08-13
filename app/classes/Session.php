@@ -1,9 +1,6 @@
 <?php
 
 namespace App\Classes;
-
-use App\Classes\Request;
-
 class Session
 {
     public static function put($key, $value)
@@ -58,8 +55,7 @@ class Session
 
     public static function error($key){
         if(self::has('errors')){
-            echo self::get('errors')[$key];
-            self::remove('errors');
+            echo self::get('errors')[$key] ?? '';
         }
     }
 

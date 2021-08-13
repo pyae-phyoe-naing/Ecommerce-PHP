@@ -194,6 +194,11 @@
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     @include('share.toast')
     @yield('scripts')
+    <script>
+        if (window.performance) {
+            "{{ App\Classes\Session::remove('errors') }}"
+        }
+    </script>
 </body>
 
 </html>

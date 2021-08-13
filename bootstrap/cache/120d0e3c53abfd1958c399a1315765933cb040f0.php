@@ -194,6 +194,11 @@
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <?php echo $__env->make('share.toast', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
     <?php echo $__env->yieldContent('scripts'); ?>
+    <script>
+        if (window.performance) {
+            "<?php echo e(App\Classes\Session::remove('errors')); ?>"
+        }
+    </script>
 </body>
 
 </html>
