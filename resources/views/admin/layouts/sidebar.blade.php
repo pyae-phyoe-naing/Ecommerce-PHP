@@ -24,6 +24,13 @@
                 </a>
 
             </li>
+            <li>
+                <a href="/admin/product" class="@yield('product')">
+                    <i class="metismenu-icon feather-shopping-bag"></i>
+                    Product
+                </a>
+
+            </li>
             {{-- <li>
                 <a href="#" class="@yield('category')">
                     <i class="metismenu-icon feather-grid"></i>

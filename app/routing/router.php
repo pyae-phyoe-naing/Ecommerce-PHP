@@ -22,5 +22,8 @@ $router->map('POST','/admin/subcat/create','\App\Controllers\SubCatController@st
 $router->map('GET','/admin/subcat/[i:id]/delete','\App\Controllers\SubCatController@destroy','SubCat Delete Route');
 $router->map('POST','/admin/subcat/[i:id]/update','\App\Controllers\SubCatController@update','SubCat Update Route');
 
+$router->map('GET','/admin/product','\App\Controllers\ProductController@index','Product Home Route');
+$router->map('GET','/admin/product/create','\App\Controllers\ProductController@create','Product Create Route');
+$router->map('POST','/admin/product/create','\App\Controllers\ProductController@store','Product Store Route');
 
 new RouteDispatcher($router);

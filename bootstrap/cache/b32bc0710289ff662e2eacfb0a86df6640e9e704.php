@@ -24,6 +24,13 @@
                 </a>
 
             </li>
+            <li>
+                <a href="/admin/product" class="<?php echo $__env->yieldContent('product'); ?>">
+                    <i class="metismenu-icon feather-shopping-bag"></i>
+                    Product
+                </a>
+
+            </li>
             
         </ul>
     </div>
