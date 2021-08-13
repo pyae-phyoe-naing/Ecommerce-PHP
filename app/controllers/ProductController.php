@@ -115,9 +115,10 @@ class ProductController extends BaseController
 
                 if (!empty($file->file->name)) {
                     $fileUpload = new FileUpload();
-                    if (!is_bool($fileUpload->move($file))) {
+                    if (!is_bool($fileUpload->move($file))) {                  
                         Session::put('errors', ['file' => $fileUpload->move($file)]);
                         Redirect::back();
+                        die();
                     } else {
                         $del_img = getUploadFolderImage($oldProduct->image);;
                         if (file_exists($del_img)) {
@@ -137,7 +138,7 @@ class ProductController extends BaseController
                 $oldProduct->description = escape($request->description);
                 if ($oldProduct->update()) {
                     Redirect::to('/admin/product', ['ok', 'product updated']);
-                }else{
+                } else {
                     Session::put('errors', 'product updated fail');
                     Redirect::back();
                 }
@@ -152,18 +153,18 @@ class ProductController extends BaseController
     {
 
         $product = Product::where('id', $id);
-        if(!is_null($product->first())){
-           $del_img = getUploadFolderImage($product->first()->image);
-           if(file_exists($del_img)){
-               unlink($del_img);
-           }
-          if( $product->delete()){
-            Redirect::to('/admin/product',['ok','product deleted']);
-          }else{
-            Redirect::to('/admin/product',['fail','product delete fail']);
-          }
-        }else{
-            Redirect::to('/admin/product',['fail','product not found']);
+        if (!is_null($product->first())) {
+            $del_img = getUploadFolderImage($product->first()->image);
+            if (file_exists($del_img)) {
+                unlink($del_img);
+            }
+            if ($product->delete()) {
+                Redirect::to('/admin/product', ['ok', 'product deleted']);
+            } else {
+                Redirect::to('/admin/product', ['fail', 'product delete fail']);
+            }
+        } else {
+            Redirect::to('/admin/product', ['fail', 'product not found']);
         }
     }
 }
