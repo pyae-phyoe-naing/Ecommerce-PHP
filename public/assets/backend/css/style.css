@@ -19,10 +19,30 @@
 }
 .pagination li{
     margin: 0 3px;
-    color: #007bff !important;
+    color: #3f6ad8 !important;
     background-color:white !important;
 }
    .paginate  li.active{
-    background-color:#007bff !important;
+    background-color:#3f6ad8 !important;
     color: white !important;
+}
+
+
+/* Frontend */
+
+.cart{
+    position: relative;
+    background-color: rgb(245, 27, 27);
+    color: white;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    line-height: 20px;
+    border-radius: 50%;
+    top: -12px;
+    left: -3px;
+    font-size: 11px;
+}
+.owl-carousel .owl-item img{
+    width: 100px !important;
 }
