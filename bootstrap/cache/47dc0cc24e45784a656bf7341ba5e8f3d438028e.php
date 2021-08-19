@@ -22,25 +22,33 @@
 </head>
 
 <body>
-    <div>
+    <input type="hidden" id='token' value="<?php echo e(App\Classes\CSRFToken::_token()); ?>">
+
+    <div class="main-container ">
         <?php echo $__env->make('frontend.layouts.navbar', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
-        <?php echo $__env->yieldContent('content'); ?>
+        <div style="margin-top: 100px !important;">
+            <?php echo $__env->yieldContent('content'); ?>
+        </div>
     </div>
+
+    <div id="facebookG" class="d-none">
+        <div id="blockG_1" class="facebook_blockG"></div>
+        <div id="blockG_2" class="facebook_blockG"></div>
+        <div id="blockG_3" class="facebook_blockG"></div>
+    </div>
+
     <?php echo $__env->yieldContent('modal'); ?>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" ></script>
+    <script type="text/javascript" src="<?php echo e(asset('backend/js/jquery.min.js')); ?>"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="<?php echo e(asset('backend/js/script.js')); ?>"></script>
+    <script src="<?php echo e(asset('frontend/js/script.js')); ?>"></script>
     <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap4.min.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="<?php echo e(asset('frontend/vendor/OwlCarousel/dist/owl.carousel.min.js')); ?>"></script>
     <?php echo $__env->make('share.toast', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
     <?php echo $__env->yieldContent('scripts'); ?>
-    <script>
-        if (window.performance) {
-            "<?php echo e(App\Classes\Session::remove('errors')); ?>"
-        }
-    </script>
+
 </body>
 
 </html>

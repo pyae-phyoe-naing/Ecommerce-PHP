@@ -167,4 +167,14 @@ class ProductController extends BaseController
             Redirect::to('/admin/product', ['fail', 'product not found']);
         }
     }
+    public function productDeatil($id){
+         $product  = Product::find($id);
+         if($product){
+             $cat = Category::find($product->cat_id);
+             $subcat = SubCategory::find($product->sub_cat_id);
+             return view('frontend.product_detail',compact('product','cat','subcat'));
+         }else{
+             Redirect::to('/',['info','Product Not Found']);
+         }
+    }
 }

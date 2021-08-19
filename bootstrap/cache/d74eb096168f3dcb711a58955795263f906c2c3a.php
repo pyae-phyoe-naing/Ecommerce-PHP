@@ -1,6 +1,7 @@
-<div class="bg-light">
+<div class="bg-light fixed-top">
     <nav class="navbar container navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="/"><img src="<?php echo e(asset('backend/images/shoplogo.png')); ?>" class="logo shadow" alt=""></a>
+        <a class="navbar-brand" href="/"><img src="<?php echo e(asset('backend/images/shoplogo.png')); ?>" class="logo shadow"
+                alt=""></a>
         
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -9,22 +10,29 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
+                <li class="nav-item <?php echo $__env->yieldContent('home'); ?>">
                     <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Cart <span class="cart">60</span></a>
+                <li class="nav-item <?php echo $__env->yieldContent('cart'); ?>">
+                    <a href="/cart" class="nav-link">Cart <span id="cart_count" class="cart"></span></a>
                 </li>
+
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Dropdown
+                        <?php echo e(App\Classes\Auth::check() ? App\Classes\Auth::user()->name : 'Account'); ?>
+
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Something else here</a>
+                        <?php if(App\Classes\Auth::check()): ?>
+                            <a class="dropdown-item" href="/">Profile</a>
+                            <div class="dropdown-divider"></div>
+                            <a onclick="clearAll()" class="dropdown-item" href="/user/logout">Logout</a>
+                        <?php else: ?>
+                            <a class="dropdown-item" href="/user/register">Register</a>
+                            <a class="dropdown-item" href="/user/login">Login</a>
+                        <?php endif; ?>
+
                     </div>
                 </li>
 
@@ -36,4 +44,10 @@
         </div>
     </nav>
 </div>
+<script>
+    function clearAll() {
+        clearCartAry();
+        localStorage.setItem('products', JSON.stringify([]));
+    }
+</script>
 <?php /**PATH C:\xampp\htdocs\PHP-Ecommerce\resources\views/frontend/layouts/navbar.blade.php ENDPATH**/ ?>

@@ -1,5 +1,6 @@
 <?php
 
+use App\Classes\Auth;
 use App\Classes\Mail;
 use App\Classes\Session;
 use App\models\Category;
@@ -63,4 +64,5 @@ $policy = [
 //if($validator->hasError()){
 //    beautify($validator->getError());
 //}
+
 

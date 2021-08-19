@@ -3,6 +3,7 @@
 
 namespace App\classes;
 
+use App\Classes\Auth;
 use Illuminate\Database\Capsule\Manager as Capsule;
 
 class ValidateRequest
@@ -15,6 +16,8 @@ class ValidateRequest
     private $errors = [];
     private $error_message = [
         'unique' => ':attribute field is already exist',
+        'unique' => ':attribute field is already exist',
+        'uniqId' => ':attribute field is already exist',
         'required' => ':attribute field is required',
         'minLength' => ':attribute field must be at least :policy characters',
         'maxLength' => ':attribute field must be most :policy characters',
@@ -65,7 +68,13 @@ class ValidateRequest
             return Capsule::table($policy)->where($column, $value)->exists() ? false : true;
         }
     }
-
+    public function uniqId($column, $value, $policy)
+    {
+        $id = Auth::user()->id;
+        if ($value != null && !empty(trim($value))) {
+            return Capsule::table($policy)->where($column, $value)->where('id','!=',$id)->first() ? false : true;
+        }
+    }
     public function required($column, $value, $policy)
     {
         if (!is_object($value))
