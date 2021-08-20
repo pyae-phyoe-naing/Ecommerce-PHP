@@ -38,6 +38,14 @@
 @endsection
 @section('scripts')
 <script>
+    function checkCart(){
+        let item = JSON.parse(localStorage.getItem('cart'));
+        let product = JSON.parse(localStorage.getItem('products'));
+        if(item.length < 1 && product.length <1){
+            window.location.href = '/';
+        }
+    }
+    checkCart();
     // Checkout
     function checkOut(e) {
         e.preventDefault();

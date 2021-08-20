@@ -10,11 +10,15 @@ class Product extends Model
 {
     protected $fillable = ['name', 'price', 'cat_id', 'sub_cat_id', 'image', 'featured', 'quantity', 'description'];
 
-    public function genPaginate($limit)
+    public function genPaginate($limit,$search_key='')
     {
        $dataArr = [];
        $table = $this->getTable();
-       $data = Capsule::select("SELECT * FROM $table ORDER BY id DESC" . $limit);
+       if($search_key !== ''){
+         $data = Capsule::select("SELECT * FROM $table WHERE name LIKE '%$search_key%' ORDER BY id DESC" . $limit);
+       }else{
+         $data = Capsule::select("SELECT * FROM $table  ORDER BY id DESC" . $limit);
+       }
        foreach ($data as $val) {
           $date = new Carbon($val->created_at);
           $cat = Category::where('id',$val->cat_id)->first();

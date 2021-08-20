@@ -20,8 +20,14 @@ class IndexController extends BaseController
     public  function welcome()
     {
         if (Session::has('order-key')) Session::remove('order-key');
-        $total_count = Product::count();
-        list($product, $pages) = paginate(12, $total_count, new Product());
+        if (isset($_GET['search'])) {
+            $search_key = Request::get('key_get')->search;
+            $total_count = Product::where('name','like',"%$search_key%")->count();
+            list($product, $pages) = paginate(12, $total_count, new Product(),$search_key);
+        } else {
+            $total_count = Product::count();
+            list($product, $pages) = paginate(12, $total_count, new Product());   
+        }
         $product = json_decode(json_encode($product));
         $carousel = Product::orderBy('id', 'desc')->get();
         return view('frontend.welcome', compact('product', 'pages', 'carousel'));
@@ -91,7 +97,7 @@ class IndexController extends BaseController
             exit;
         } else {
             $rule = [
-                "phone" => ["minLength" => "9", "maxLength" => "11", "uniqId"=>"users","required" => true],
+                "phone" => ["minLength" => "9", "maxLength" => "11", "uniqId" => "users", "required" => true],
                 "address" => ["required" => true]
             ];
             $validate->checkValidate($request, $rule);
@@ -138,7 +144,7 @@ class IndexController extends BaseController
         // Save Order
         $order = new Order();
         $order_price = 0;
-        foreach($orders->products as $p){
+        foreach ($orders->products as $p) {
             $order_price += $p->price * $p->qty;
 
             // Reduce Product Quantity
@@ -151,11 +157,11 @@ class IndexController extends BaseController
         $order->user_id = $user_id;
         $order->price = $order_price;
         $order->save();
-        
+
 
         // Save Order Detail Table
-       
-        foreach($orders->products as $p){
+
+        foreach ($orders->products as $p) {
             $od = new OrderDetail();
             $od->order_id = $order->id;
             $od->product_id = $p->id;
