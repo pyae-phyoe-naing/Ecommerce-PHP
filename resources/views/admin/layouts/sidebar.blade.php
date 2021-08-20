@@ -31,6 +31,13 @@
                 </a>
 
             </li>
+            <li>
+                <a href="/admin/order" class="@yield('order')">
+                    <i class="metismenu-icon feather-calendar"></i>
+                    Order
+                </a>
+
+            </li>
             {{-- <li>
                 <a href="#" class="@yield('category')">
                     <i class="metismenu-icon feather-grid"></i>

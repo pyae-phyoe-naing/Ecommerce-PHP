@@ -31,6 +31,13 @@
                 </a>
 
             </li>
+            <li>
+                <a href="/admin/order" class="<?php echo $__env->yieldContent('order'); ?>">
+                    <i class="metismenu-icon feather-calendar"></i>
+                    Order
+                </a>
+
+            </li>
             
         </ul>
     </div>

@@ -13,7 +13,7 @@
                     <h6>Admin will contact you soon !</h6>
                 </div>
                 <div class="card-footer">
-                    <a href="/" class="btn-success btn">I Know</a>
+                    <a href="/" class="btn-success btn">Go Back Home</a>
                 </div>
             </div>
 

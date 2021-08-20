@@ -20,3 +20,7 @@ $router->map('POST','/admin/product/create','\App\Controllers\ProductController@
 $router->map('GET','/admin/product/[i:id]/edit','\App\Controllers\ProductController@edit','Product Edit Route');
 $router->map('POST','/admin/product/[i:id]/edit','\App\Controllers\ProductController@update','Product Update Route');
 $router->map('GET','/admin/product/[i:id]/delete','\App\Controllers\ProductController@destroy','Product Delete Route');
+
+$router->map('GET','/admin/order','\App\Controllers\OrderController@index','Order Home Route');
+$router->map('GET','/admin/order/detail/[i:id]','\App\Controllers\OrderController@orderDetail','Order Detail Route');
+$router->map('GET','/admin/order/status/[i:id]','\App\Controllers\OrderController@orderStatus','orderStatus Route');
